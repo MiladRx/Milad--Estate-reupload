@@ -39,12 +39,15 @@ function Agent({ params }) {
             <div className="flex">
               <div className="w-2/5">
                 <Image
-                  src={agent.image}
+                  src={agent.image.url}
                   alt="description_of_image"
                   width="280"
-                  height="200"
+                  height="280"
+                  style={{ objectFit: 'cover' }}
                 />
-                <div className="flex absolute z-10 bottom-52 bg-[#162A41] w-28 h-10 p-3 justify-between">
+  
+
+                <div  className="flex absolute z-10 bottom-[270px]  bg-[#162A41] w-28 h-10 p-3 justify-between">
                   <SocialMedia />
                 </div>
               </div>

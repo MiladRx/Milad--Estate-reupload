@@ -51,7 +51,7 @@ function Property({ params }) {
       <div className="flex mx-96 mt-6 justify-between">
         <div className="flex flex-col text-xl font-semibold gap-1">
           <p>{house.adress1}</p>
-          <p>{house.adress2}</p>
+          <p>{house.postalcode} {house.city}</p>
         </div>
         <div className="flex gap-10">
           {propertyData.imagePaths.map((image, index) => (
@@ -92,7 +92,7 @@ function Property({ params }) {
         <div className="flex justify-between gap-12">
           <div className="flex flex-col justify-start gap-[0.2rem]">
             <p>Sagsnummer: </p>
-            <p>Sagsnummer: </p>
+            <p>Boligareal: </p>
             <p>Grundareal: </p>
             <p>Rum/ Værelser: </p>
             <p>Antal plan: </p>
@@ -100,7 +100,7 @@ function Property({ params }) {
           <div className="flex flex-col justify-start gap-[0.2rem]">
             <p>{propertyData.caseNumber}</p>
             <p>
-              {propertyData.livingArea} m<sup className="text-xs">2</sup>
+              {house.livingspace} m<sup className="text-xs">2</sup>
             </p>
             <p>
               {propertyData.groundArea} m<sup className="text-xs">2</sup>
@@ -160,7 +160,7 @@ function Property({ params }) {
             <div className="flex">
               <div className="flex flex-col w-3/5 relative z-10">
                 <Image
-                  src={agentData.image}
+                  src={house.agent?.image.url}
                   alt="description_of_image"
                   width="300"
                   height="300"
@@ -172,10 +172,10 @@ function Property({ params }) {
 
               <div className="w-3/5 ml-8">
                 <div className="flex justify-between">
-                  <div className="font-bold text-2xl">{agentData.name}</div>
+                  <div className="font-bold text-2xl">{house.agent?.name}</div>
                 </div>
                 <div className="text-gray-400 text-base">
-                  {agentData.address}
+                  {house.agent?.title}
                 </div>
                 <Separator className="bg-gray-300 w-1/5 h-[0.08rem] my-5" />
                 <div className="flex">
@@ -185,7 +185,7 @@ function Property({ params }) {
                     width="22"
                     height="22"
                   />
-                  <div className="pl-3 text-lg">{agentData.call}</div>
+                  <div className="pl-3 text-lg">{house.agent?.phone}</div>
                 </div>
                 <div className="flex mt-4">
                   <Image
@@ -194,7 +194,7 @@ function Property({ params }) {
                     width="22"
                     height="22"
                   />
-                  <div className="pl-3 text-lg">{agentData.email}</div>
+                  <div className="pl-3 text-lg">{house.agent?.email}</div>
                 </div>
               </div>
             </div>

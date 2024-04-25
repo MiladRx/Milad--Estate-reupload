@@ -30,7 +30,7 @@ export default function AgentCard({ agent }) {
               {/* Use agent's image URL instead of static image */}
 
               <Image
-                src={agent.image}
+                src={agent.image.url}
                 alt={agent.name}
                 width="400"
                 height="200"
