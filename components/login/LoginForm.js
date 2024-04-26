@@ -18,16 +18,7 @@ const formSchema = z.object({
     .max(10, {
       message: "Adgangskoden skal være mindre end 10 tegn.",
     })
-    .refine(
-      (value) =>
-        /[a-z]/.test(value) &&
-        /[0-9]/.test(value) &&
-        /[^a-zA-Z0-9]/.test(value),
-      {
-        message:
-          "Adgangskoden skal indeholde mindst ét ​​bogstav, ét tal og ét specialtegn.",
-      }
-    ),
+   
 });
 
 import { Button } from "@/components/ui/button";
@@ -51,9 +42,32 @@ export default function LoginForm() {
     mode: "onChange",
   });
 
-  // 2. Define a submit handler.
-  function onSubmit(values) {
-    // console.log(values);
+  // Define a submit handler.
+  function onSubmit(data) {
+    fetch("https://dinmaegler.onrender.com/auth/local", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        identifier: data.email,
+        password: data.password
+      })
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Handle successful authentication
+      console.log(data);
+    })
+    .catch(error => {
+      // Handle errors
+      console.error('There was an error with the fetch operation:', error);
+    });
   }
 
   return (
@@ -102,7 +116,7 @@ export default function LoginForm() {
             <div className="flex items-center justify-center mt-8 text-lg gap-1">
               <p>Har du ikke en konto?</p>
               <Link href="/auth/register">
-              <p className="text-sky-500"> Opret bruger.</p>
+                <p className="text-sky-500"> Opret bruger.</p>
               </Link>
             </div>
           </div>

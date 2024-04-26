@@ -1,0 +1,37 @@
+/* custom-toast-styles.css */
+
+.custom-toast {
+    /* Customize the container styles */
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .custom-toast .Toastify__toast-body {
+    /* Customize the toast body styles */
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .custom-toast .Toastify__toast {
+    /* Customize the toast styles */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+  }
+  
+  /* Customize the close button */
+  .custom-toast .Toastify__close-button {
+    color: #333;
+    font-weight: bold;
+  }
+  
+  /* Customize the progress bar */
+  .custom-toast .Toastify__progress-bar {
+    background-color: #fff;
+  }
+  
+  /* Customize the position of the toast */
+  .custom-toast .Toastify__toast-container {
+    top: 20px;
+    right: 20px;
+  }
+  

@@ -1,39 +1,37 @@
 "use client";
-import React, { useState, useEffect } from "react";
 
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import React, { useState, useEffect } from "react";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
-import RangeSlider, { Slider } from "@/components/rangeSlider";
+import RangeSlider from "@/components/rangeSlider";
 import SubNavigation from "@/components/subNavigation";
 import PropertyCard from "@/components/propertyCard";
 
-
-
 function PropertyList() {
   const [houses, setHouses] = useState([]);
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(6000000);
+  const [propertyType, setPropertyType] = useState(null);
 
   useEffect(() => {
-    // Fetch houses data here and set it to the state
     const fetchHousesData = async () => {
       try {
-        const response = await fetch("https://dinmaegler.onrender.com/homes");
+        let url = `https://dinmaegler.onrender.com/homes?price_gte=${minPrice}&price_lte=${maxPrice}`;
+        
+        if (propertyType) {
+          url += `&type_eq=${propertyType}`;
+        }
+
+        const response = await fetch(url);
         const data = await response.json();
-        setHouses(data); // Assuming the response data is an array of houses
-        // Log the fetched data
+        setHouses(data);
       } catch (error) {
         console.error("Error fetching houses data:", error);
       }
     };
+
     fetchHousesData();
-  }, []);
+  }, [minPrice, maxPrice, propertyType]);
 
   const handleFavouriteClick = (id) => {
     setHouses(
@@ -61,8 +59,10 @@ function PropertyList() {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    <SelectLabel>Sample</SelectLabel>
-                    <SelectItem value="sample1">Villa</SelectItem>
+                    <SelectItem value="Villa" onClick={() => setPropertyType("Villa")}>Villa</SelectItem>
+                    <SelectItem value="Ejerlejlighed" onClick={() => setPropertyType("Ejerlejlighed")}>Ejerlejlighed</SelectItem>
+                    <SelectItem value="Byhus" onClick={() => setPropertyType("Byhus")}>Byhus</SelectItem>
+                    <SelectItem value="Landejendom" onClick={() => setPropertyType("Landejendom")}>Landejendom</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
@@ -71,18 +71,18 @@ function PropertyList() {
           <div className="flex flex-col gap-2">
             <div className="text-lg">Pris-interval</div>
             <div>
-              <RangeSlider />
+              <RangeSlider onRangeChange={(min, max) => {
+                setMinPrice(min);
+                setMaxPrice(max);
+              }} />
             </div>
           </div>
         </div>
         <div className="flex flex-wrap gap-7 justify-between h-auto mt-12">
-          {houses && houses.slice(0, 8).map((house, index) => (
+          {houses && houses.slice(0, 10).map((house, index) => (
             <PropertyCard key={index} house={house} />
           ))}
         </div>
-
-
-
       </div>
     </div>
   );

@@ -16,7 +16,6 @@ function Property({ params }) {
   const [showModal, setShowModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [isFavourite, setIsFavourite] = useState(false); // Initialize as false
-  const toggleModal = () => setShowModal(!showModal);
   const toggleIsFavorite = () => {
     setIsFavourite(!isFavourite);
   };
@@ -172,9 +171,9 @@ function Property({ params }) {
 
               <div className="w-3/5 ml-8">
                 <div className="flex justify-between">
-                  <div className="font-bold text-2xl">{house.agent?.name}</div>
+                  <div className="font-bold text-1xl">{house.agent?.name}</div>
                 </div>
-                <div className="text-gray-400 text-base">
+                <div className="text-gray-400 text-xs">
                   {house.agent?.title}
                 </div>
                 <Separator className="bg-gray-300 w-1/5 h-[0.08rem] my-5" />
@@ -185,7 +184,7 @@ function Property({ params }) {
                     width="22"
                     height="22"
                   />
-                  <div className="pl-3 text-lg">{house.agent?.phone}</div>
+                  <div className="pl-3 text-md">{house.agent?.phone}</div>
                 </div>
                 <div className="flex mt-4">
                   <Image
@@ -194,7 +193,7 @@ function Property({ params }) {
                     width="22"
                     height="22"
                   />
-                  <div className="pl-3 text-lg">{house.agent?.email}</div>
+                  <div className="pl-3 text-md">{house.agent?.email}</div>
                 </div>
               </div>
             </div>

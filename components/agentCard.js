@@ -1,5 +1,4 @@
 "use client"
-
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,12 +13,10 @@ export default function AgentCard({ agent }) {
         // Assuming the response data is an array of agents
         // You might need to adjust this based on the actual response structure
         setAgentData(data);
-        console.log(data); // Log the fetched agents data
+        // console.log(data); // Remove or comment out this line to stop logging
       })
       .catch((error) => console.error("Error fetching agents:", error));
   }, []); // Empty dependency array means this effect runs only once, on mount
-
-  
 
   return (
     <>
@@ -28,14 +25,12 @@ export default function AgentCard({ agent }) {
           <CardContent className="flex flex-col items-center justify-center p-0 h-auto w-full rounded border border-gray-200">
             <Link href={`/agents/${agent.id}`}>
               {/* Use agent's image URL instead of static image */}
-
               <Image
                 src={agent.image.url}
                 alt={agent.name}
                 width="400"
                 height="200"
               />
-
             </Link>
             <p className="font-bold text-2xl pt-5">
               <Link href={`/agents/${agent.id}`}>{agent.name}</Link>

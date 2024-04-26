@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import Slider, { SliderTrack, SliderThumb } from "react-slider";
+import Slider from "react-slider";
 
 const MIN = 0;
-const MAX = 50000000;
+const MAX = 6000000;
 
-export default function RangeSlider() {
+export default function RangeSlider({ onRangeChange }) {
   const [values, setValues] = useState([MIN, MAX]);
   const [startValue, setStartValue] = useState(MIN);
   const [endValue, setEndValue] = useState(MAX);
+
   return (
     <div>
       <Slider
@@ -17,6 +18,8 @@ export default function RangeSlider() {
           setValues(newValues);
           setStartValue(newStartValue);
           setEndValue(newEndValue);
+          // Call the onRangeChange function prop with the new range values
+          onRangeChange(newStartValue, newEndValue);
         }}
         value={values}
         min={MIN}
