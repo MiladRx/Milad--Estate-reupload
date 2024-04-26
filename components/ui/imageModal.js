@@ -20,7 +20,7 @@ function ImageModal({ imageSrc, closeModal }) {
     const [isFavourite, setIsFavourite] = useState(false);
 
     const toggleIsFavorite = () => {
-      setIsFavourite(!isFavourite);
+        setIsFavourite(!isFavourite);
     };
 
     return (
@@ -49,16 +49,7 @@ function ImageModal({ imageSrc, closeModal }) {
                         </button>
                     ))}
                     <button onClick={toggleIsFavorite}>
-                        <Image
-                            src={
-                                isFavourite ? "/icons/property_data/white-heart.png" : "/icons/property_data/heart_white.svg"
-                            }
-                            // src={propertyData.imagePathsLastImage}
-                            alt={`description_of_image_ ${propertyData.imagePaths.length}`}
-                            width="40"
-                            height="10"
-                            className="image"
-                        />
+                        
                     </button>
                 </div>
 

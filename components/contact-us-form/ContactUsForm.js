@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -41,10 +41,21 @@ export default function ContactUsForm({ isAgant }) {
     mode: "onChange",
   });
 
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   // 2. Define a submit handler.
   function onSubmit(values) {
-    // console.log(values);
+    form.reset();
+    setIsSubmitted(true);
   }
+
+  useEffect(() => {
+    if (isSubmitted) {
+      alert("Completed!");
+      form.reset();
+    }
+  }, [isSubmitted, form]);
+
   return (
     <div className="p-5">
       <Form {...form}>

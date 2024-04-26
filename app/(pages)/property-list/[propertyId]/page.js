@@ -63,16 +63,7 @@ function Property({ params }) {
               />
             </button>
           ))}
-          <button onClick={toggleIsFavorite}>
-            <Image
-              src={
-                isFavourite ? "/icons/black_heart.svg" : "/icons/property_data/heart_gray.svg"
-              }
-              alt={`description_of_image_ ${propertyData.imagePaths.length}`}
-              width="40"
-              height="10"
-            />
-          </button>
+          
           {showModal ? (
             <>
               <ImageModal imageSrc={selectedImage} closeModal={() => setShowModal(false)} />
@@ -148,7 +139,7 @@ function Property({ params }) {
         </div>
       </div>
       <div className="flex mx-96 py-16 gap-12">
-        <div>
+        <div className="flex flex-col gap-3 w-1/2">
           <p className="text-2xl font-semibold">Beskrivelse</p>
           <p className="text-lg">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more or less normal distribution of letters as opposed to using Content here content here making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default.</p>
           <p className="text-lg">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which dont look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isnt anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.</p>

@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import AgentCard from "@/components/agentCard";
 import PropertyCard from "@/components/propertyCard";
+import SubscribeForm from "@/components/SubscribeForm";
 
 import { agentsData } from "@data/agent-data";
 import { propertiesData } from "@data/property-data";
@@ -29,7 +30,7 @@ function HomePage() {
         const data = await response.json();
         setHouses(data); // Assuming the response data is an array of houses
         setFilteredHouses(data); // Initially set filtered houses to all houses
-        console.log("Fetched houses data:", data); // Log the fetched data
+        // Log the fetched data
       } catch (error) {
         console.error("Error fetching houses data:", error);
       }
@@ -43,6 +44,8 @@ function HomePage() {
     filterHouses(e.target.value);
     setShowRecommendations(e.target.value.trim() !== "");
   };
+
+
 
   // Function to filter houses based on search keyword
   const filterHouses = (keyword) => {
@@ -211,36 +214,19 @@ function HomePage() {
         </div>
       </div>
 
-      {/* Subscribe section */}
-      <div className="relative flex flex-col items-center justify-center">
-        <Image
-          src="/assets/Subscribe.png"
-          alt="description_of_image"
-          width="1920"
-          height="10"
-        />
-        <div className="absolute z-10 flex flex-row gap-12">
-          <div className="text-3xl top-9 text-white font-bold">
-            Tilmeld dig vores nyhedsbrev og
-            <br /> hold dig opdateret på boligmarkedet
-          </div>
-          <div>
-            <div className="relative">
-              <Input
-                placeholder="Indtast din email adresse"
-                className="pl-10 text-[1rem] rounded w-[30rem] h-[4rem]"
-              />
-              <Image
-                src="/icons/arrow.svg"
-                alt="description_of_image"
-                width="25"
-                height="25"
-                className="absolute ml-8 left-96 top-1/2 transform -translate-y-1/2 h-12 w-8 text-gray-500"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+  
+
+
+
+      {/* subscribe section */}
+      <SubscribeForm />
+
+
+
+
+
+
+
 
       {/* agent list section */}
       <div className="bg-white h-auto py-24 mx-96">
@@ -327,7 +313,7 @@ function HomePage() {
           </div>
         </div>
       </div>
-    </div>
+    </div >
 
   );
 }
