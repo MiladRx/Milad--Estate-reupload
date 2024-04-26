@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState, useEffect } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -43,9 +41,8 @@ export default function ContactUsForm({ isAgant }) {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // 2. Define a submit handler.
+  // Define a submit handler.
   function onSubmit(values) {
-    form.reset();
     setIsSubmitted(true);
   }
 
@@ -53,6 +50,7 @@ export default function ContactUsForm({ isAgant }) {
     if (isSubmitted) {
       alert("Completed!");
       form.reset();
+      setIsSubmitted(false); // Reset the submission state
     }
   }, [isSubmitted, form]);
 

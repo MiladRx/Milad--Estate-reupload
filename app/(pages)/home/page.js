@@ -240,6 +240,12 @@ function HomePage() {
           </p>
         </div>
         
+        <div className="flex flex-wrap h-auto mt-10">
+            {agentsData.slice(0, 1).map((agent, index) => (
+              <AgentCard key={index} agent={agent} />
+            ))}
+          </div>
+
         <div className="flex w-full items-center justify-center mt-10">
           <Link href="/agents">
             <Button
