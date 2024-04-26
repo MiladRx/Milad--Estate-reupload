@@ -37,7 +37,7 @@ function ContactUs() {
                 <div className="text-[1.25rem] font-bold text-black">
                   Ring til os
                 </div>
-                <div className="text-[1.2rem] ">++45 7070 4000</div>
+                <div className="text-[1.2rem] ">+45 7070 4000</div>
               </div>
             </div>
             <div className="w-[20rem] bg-gray-300 h-[0.1rem] mx-10" />

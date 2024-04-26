@@ -25,7 +25,7 @@ function Navigation({}) {
                   width="20"
                   height="20"
                 />
-                <p className="text-lg">++45 7070 4000</p>
+                <p className="text-lg">+45 7070 4000</p>
               </div>
             </div>
           </div>
